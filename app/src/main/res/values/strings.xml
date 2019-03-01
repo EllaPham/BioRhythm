@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">BioRhythm</string>
+    <string name="hint_birthday">Please select your birthday:</string>
+    <string name="hint_selectedDay">Please select day:</string>
+    <string name="display_chart_for">Display chart for: </string>
+    <string-array name="options">
+        <item>the selected day</item>
+        <item>A month</item>
+    </string-array>
+</resources>
