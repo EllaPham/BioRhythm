@@ -5,6 +5,7 @@ import android.util.Log;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -56,7 +57,7 @@ public class BioRhythmCalculator {
     private long numberOfDaysFromBirth() {
         try {
 
-            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+            SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
             Date startSate = sdf.parse(start_date);
             Date endDate = sdf.parse(end_date);
             long diff = endDate.getTime() - startSate.getTime();
@@ -67,6 +68,31 @@ public class BioRhythmCalculator {
             e.printStackTrace();
             return 0;
         }
-
     }
+    private long numberOfDaysFromBirth(String s_date, String e_date) {
+
+        try {
+            SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
+            Date startSate = sdf.parse(s_date);
+            Date endDate = sdf.parse(e_date);
+            long diff = endDate.getTime() - startSate.getTime();
+            Log.d("BioRhythmCalculator: ", "t = " + TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS));
+            return TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS);
+
+        } catch (ParseException e) {
+            e.printStackTrace();
+            return 0;
+        }
+    }
+    public HashMap<String,Integer> getListOfTFromCurrentDate(){
+        String current_date="";
+        // getcurrent_date
+
+        //getT; T: days from  birthday to current date.
+        long T = numberOfDaysFromBirth(start_date,current_date);
+
+        //return a map <date,T>
+            return null;
+        }
+
 }

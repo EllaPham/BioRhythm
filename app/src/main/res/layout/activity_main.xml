@@ -57,6 +57,11 @@
             android:id="@+id/barchart"
             android:layout_below="@+id/btnCalculate"
             />
+        <com.github.mikephil.charting.charts.LineChart
+            android:id="@+id/linechart"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/btnCalculate"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
