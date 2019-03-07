@@ -9,30 +9,32 @@ import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 
 /**
  * Created by Trang on 2/28/2019.
  */
 
 public class LineChartRender {
-    HashMap<String, Integer> lst_data = new HashMap<String, Integer>(); // <date:phy>
+
+    LinkedHashMap<String, Float> dict_phy = new LinkedHashMap<>(); // <date:phy>
     private LineChart lineChart;
 
-    public LineChartRender( LineChart lineChart, HashMap<String, Integer> lst_data) {
-        this.lst_data = lst_data;
+    public LineChartRender( LineChart lineChart, LinkedHashMap<String, Float> dict_phy) {
+        this.dict_phy = dict_phy;
         this.lineChart = lineChart;
     }
 
     public void drawLineChart() {
+        this.setLChartData();
     }
 
     // documents: https://www.studytutorial.in/android-line-chart-or-line-graph-using-mpandroid-library-tutorial
     private ArrayList<String> setXAxisValues() {
         ArrayList<String> xVals = new ArrayList<String>();
 
-        for (Object a_date : lst_data.keySet()) {
-            xVals.add(String.valueOf(a_date));
+        for (String a_date : dict_phy.keySet()) {
+            xVals.add(a_date);
         }
 
         return xVals;
@@ -43,14 +45,15 @@ public class LineChartRender {
         // Y SHOW DATE EX. =03/03, show keys of lst_days map
         ArrayList<Entry> yVals = new ArrayList<Entry>();
         int i = 0;
-        for (Object value : lst_data.values()) {
-            yVals.add(new Entry((float) value, i));
+        for (Float value : dict_phy.values()) {
+
+            yVals.add(new Entry(value, i));
             i++;
         }
         return yVals;
     }
 
-    private void setData() {
+    private void setLChartData() {
         ArrayList<String> xVals = setXAxisValues();
 
         ArrayList<Entry> yVals = setYAxisValues();

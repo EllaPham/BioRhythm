@@ -57,8 +57,8 @@ public class BioRhythmCalculator {
     public double getIntellectualValue() {
         return Math.sin((2 * Math.PI * this.numberOfDaysFromBirth()) / 33);
     }
-    public double getPhysicalValue(Long t) {
-        return (int) Math.round(100 *Math.sin((2 * Math.PI * t) / 23));
+    public float getPhysicalValue(Long t) {
+        return (float) Math.round(100 *Math.sin((2 * Math.PI * t) / 23));
     }
 
     public double getEmotionalValue(Long t) {
@@ -131,8 +131,8 @@ public class BioRhythmCalculator {
         //return a map <date,T>
             return dict_T;
         }
-    public LinkedHashMap<String,Double> getPhyForAMonth(){
-        LinkedHashMap<String,Double> dict_phy = new LinkedHashMap<>();
+    public LinkedHashMap<String,Float> getPhyForAMonth(){
+        LinkedHashMap<String,Float> dict_phy = new LinkedHashMap<>();
         this.getListOfTFromCurrentDate();
         for(String str: dict_T.keySet()){
             dict_phy.put(str,this.getPhysicalValue(dict_T.get(str)));

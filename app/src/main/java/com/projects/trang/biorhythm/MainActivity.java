@@ -163,8 +163,9 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                     if(item.equals("the selected day")){
                         //For testing:
                         //aCalculator.getListOfTFromCurrentDate();
-                        aCalculator.getPhyForAMonth();
-
+                        //aCalculator.getPhyForAMonth();
+                        lineChart.setVisibility(View.INVISIBLE);
+                        barChart.setVisibility(View.VISIBLE);
 
                         int phy = (int) Math.round(100 * aCalculator.getPhysicalValue());
                         int emo = (int) Math.round(100 * aCalculator.getEmotionalValue());
@@ -194,12 +195,16 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                         tvEmotional.setText("");
                         tvIntellectual.setText("");
                         Toast.makeText(MainActivity.this, "Show data in a month for you", Toast.LENGTH_LONG).show();
+                        barChart.setVisibility(View.INVISIBLE);
+                        lineChart.setVisibility(View.VISIBLE);
                         //HashMap<String,Integer> lst_T = aCalculator.getListOfTFromCurrentDate();
 
                         //from lst_T, calculate phy, output a map <date,phy>
 
                         // draw linechart
-                        LineChartRender aLineChart = new LineChartRender(lineChart,lst_data);
+                        LineChartRender aLineChart = new LineChartRender(lineChart,aCalculator.getPhyForAMonth());
+                        aLineChart.drawLineChart();
+                        lineChart.invalidate();
 
                     }
 
@@ -219,6 +224,10 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     public void onNothingSelected(AdapterView<?> arg0) {
         // TODO Auto-generated method stub
     }
+/*comment - for version 2
+- show defaut date
+- delete spinner, instead, create 2 buttons: show today, show this month
+*/
 
 
 }
