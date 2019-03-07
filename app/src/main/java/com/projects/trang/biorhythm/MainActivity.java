@@ -161,6 +161,11 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                     alertDialog.show();
                 } else {
                     if(item.equals("the selected day")){
+                        //For testing:
+                        //aCalculator.getListOfTFromCurrentDate();
+                        aCalculator.getPhyForAMonth();
+
+
                         int phy = (int) Math.round(100 * aCalculator.getPhysicalValue());
                         int emo = (int) Math.round(100 * aCalculator.getEmotionalValue());
                         int intel = (int) Math.round(100 * aCalculator.getIntellectualValue());
@@ -189,7 +194,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                         tvEmotional.setText("");
                         tvIntellectual.setText("");
                         Toast.makeText(MainActivity.this, "Show data in a month for you", Toast.LENGTH_LONG).show();
-                        HashMap<String,Integer> lst_T = aCalculator.getListOfTFromCurrentDate();
+                        //HashMap<String,Integer> lst_T = aCalculator.getListOfTFromCurrentDate();
 
                         //from lst_T, calculate phy, output a map <date,phy>
 
